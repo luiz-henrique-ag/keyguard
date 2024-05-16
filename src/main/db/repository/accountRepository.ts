@@ -1,4 +1,5 @@
 import { Db } from '../db'
+import { Account } from '../model/account'
 
 export class AccountRepository {
   static async getAll(): Promise<Account[] | undefined> {

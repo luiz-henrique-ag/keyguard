@@ -1,5 +1,4 @@
-import { contextBridge } from 'electron'
-// import { AccountRepository } from 'src/db/repository/accountRepository'
+import { contextBridge, ipcRenderer } from 'electron'
 
 if (!process.contextIsolated) {
   throw new Error('contextIsolation must be enabled in the BrowserWindow')
@@ -8,7 +7,8 @@ if (!process.contextIsolated) {
 try {
   contextBridge.exposeInMainWorld('api', {
     locale: navigator.language,
-    teste: () => console.log('Hi Electron')
+    getAllAccounts: () => ipcRenderer.invoke('getAll'),
+    funcao: () => console.log('funcao')
   })
 } catch (error) {
   console.error(error)

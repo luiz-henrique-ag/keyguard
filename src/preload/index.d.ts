@@ -1,6 +1,9 @@
+import { Account } from 'src/main/db/model/account'
+
 export interface IElectronApi {
   locale: string
-  teste: typeof Promise<Account[] | undefined>
+  getAllAccounts: () => Promise<Account[] | undefined>
+  funcao: () => void
 }
 
 declare global {

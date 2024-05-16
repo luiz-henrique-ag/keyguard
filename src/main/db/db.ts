@@ -18,4 +18,8 @@ export class Db {
     }
     return this.connection
   }
+
+  static async closeConnection() {
+    this.connection.end()
+  }
 }

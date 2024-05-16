@@ -1,7 +1,9 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
-import { BrowserWindow, app, shell } from 'electron'
+import { BrowserWindow, app, ipcMain, shell } from 'electron'
 import { join } from 'path'
 import icon from '../../resources/icon.png?asset'
+import { Db } from './db/db'
+import { AccountRepository } from './db/repository/accountRepository'
 
 function createWindow(): void {
   // Create the browser window.
@@ -54,6 +56,8 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
+  ipcMain.handle('getAll', (_) => AccountRepository.getAll())
+
   createWindow()
 
   app.on('activate', function () {
@@ -66,9 +70,10 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
+app.on('window-all-closed', async () => {
   if (process.platform !== 'darwin') {
     app.quit()
+    await Db.closeConnection()
   }
 })
 

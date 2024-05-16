@@ -4,18 +4,13 @@ import { resolve } from 'path'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()],
-    resolve: {
-      alias: {
-        '@/db': resolve('src/db')
-      }
-    }
+    plugins: [externalizeDepsPlugin()]
   },
   preload: {
     plugins: [externalizeDepsPlugin()],
     resolve: {
       alias: {
-        '@/db': resolve('src/db')
+        '@': resolve('src/db')
       }
     }
   },
@@ -26,8 +21,7 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src'),
         '@/assets': resolve('src/renderer/src/assets'),
         '@/components': resolve('src/renderer/src/components'),
-        '@/lib': resolve('src/renderer/src/lib'),
-        '@db': resolve('src/db')
+        '@/lib': resolve('src/renderer/src/lib')
       }
     },
     plugins: [react()]
