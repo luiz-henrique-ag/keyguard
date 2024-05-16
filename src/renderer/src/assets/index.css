@@ -59,12 +59,12 @@
     @apply border-border;
   }
   #root {
-    @apply h-full;
+    @apply h-screen;
   }
 
   body {
     font-family: 'Inter', sans-serif;
-    @apply h-full;
+    @apply h-screen;
     @apply bg-background text-foreground;
   }
 }

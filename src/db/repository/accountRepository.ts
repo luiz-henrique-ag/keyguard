@@ -1,20 +1,30 @@
 import { Db } from '../db'
 
-class AccountRepository {
-  async getAll(): Promise<Account[] | undefined> {
+export class AccountRepository {
+  static async getAll(): Promise<Account[] | undefined> {
     const client = await Db.getInstance()
     try {
       const result = await client.query<Account>('SELECT * FROM accounts')
+      console.log(result)
+      return []
     } catch (error) {
       return undefined
     }
   }
 
-  async getById(id: number): Promise<Account> {}
+  static async getById(id: number): Promise<Account> {
+    return { id: 0, account: '', password: '' }
+  }
 
-  async insert(account: Account): Promise<boolean> {}
+  static async insert(account: Account): Promise<boolean> {
+    return false
+  }
 
-  async update(account: Account): Promise<boolean> {}
+  static async update(account: Account): Promise<boolean> {
+    return false
+  }
 
-  async delete(account: Account): Promise<boolean> {}
+  static async delete(account: Account): Promise<boolean> {
+    return false
+  }
 }

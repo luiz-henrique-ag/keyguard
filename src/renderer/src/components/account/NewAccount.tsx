@@ -6,7 +6,7 @@ import { Input } from '../ui/input'
 export const NewAccount = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button size="lg">Novo</Button>
       </DialogTrigger>
       <DialogContent>
@@ -26,7 +26,7 @@ export const NewAccount = () => {
             <Input id="senha" />
           </div>
           <div className="flex justify-end">
-            <Button className="w-[120px]">Salvar</Button>
+            <Button className="w-[120px] bg-green-600 hover:bg-green-500">Salvar</Button>
           </div>
         </div>
       </DialogContent>

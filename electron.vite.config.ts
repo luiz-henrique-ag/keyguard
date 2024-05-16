@@ -12,7 +12,12 @@ export default defineConfig({
     }
   },
   preload: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
+    resolve: {
+      alias: {
+        '@/db': resolve('src/db')
+      }
+    }
   },
   renderer: {
     assetsInclude: 'src/renderer/assets/**',
@@ -22,7 +27,7 @@ export default defineConfig({
         '@/assets': resolve('src/renderer/src/assets'),
         '@/components': resolve('src/renderer/src/components'),
         '@/lib': resolve('src/renderer/src/lib'),
-        '@/db': resolve('src/db')
+        '@db': resolve('src/db')
       }
     },
     plugins: [react()]

@@ -10,11 +10,11 @@ export const AccountCard = () => {
         <CardTitle className="text-xl">Facebook</CardTitle>
         <ActionsPopover />
       </CardHeader>
-      <CardContent className="grid grid-cols-5">
+      <CardContent className="grid grid-cols-5 text-sm">
         <div className="col-span-3">
           <p>Conta</p>
           <div className="flex items-center gap-2">
-            <p className="text-muted-foreground text-sm">hiquedan@hotmail.com</p>
+            <p className="text-muted-foreground">hiquedan@hotmail.com</p>
             <Button variant="ghost" size="icon">
               <Copy size="20" />
             </Button>
@@ -23,7 +23,7 @@ export const AccountCard = () => {
         <div className="col-span-2">
           <p>Senha</p>
           <div className="flex items-center gap-2">
-            <p className="text-muted-foreground text-sm">**********************</p>
+            <p className="text-muted-foreground">**********************</p>
             <Button variant="ghost" size="icon">
               <Eye size="20" />
             </Button>

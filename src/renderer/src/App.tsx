@@ -1,14 +1,18 @@
 import '@/assets/index.css'
-import { Layout } from '@/components/layout/Layout'
-import { AccountCard } from './components/account/AccountCard'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from './components/providers/ThemeProvider'
+import { Home } from './pages/Home'
+import { Login } from './pages/Login'
 
 const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Layout>
-        <AccountCard />
-      </Layout>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }

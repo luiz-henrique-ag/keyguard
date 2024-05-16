@@ -7,9 +7,7 @@ export const ActionsPopover = () => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button variant="ghost" size="icon">
-          <EllipsisVertical size="20" />
-        </Button>
+        <EllipsisVertical size="20" />
       </PopoverTrigger>
       <PopoverContent className="w-[70px] flex flex-col gap-2">
         <Button size="icon" variant="secondary">
