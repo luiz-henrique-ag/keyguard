@@ -1,9 +1,9 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { BrowserWindow, app, ipcMain, shell } from 'electron'
 import { join } from 'path'
-import icon from '../../resources/icon.png?asset'
 import { Db } from './db/db'
-import { AccountRepository } from './db/repository/accountRepository'
+import { Account } from './db/model/account'
+import { AccountRepository } from './db/repository/account-repository'
 
 function createWindow(): void {
   // Create the browser window.
@@ -14,7 +14,6 @@ function createWindow(): void {
     minHeight: 600,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
     center: true,
     title: 'KeyGuard',
     webPreferences: {
@@ -57,6 +56,13 @@ app.whenReady().then(() => {
   })
 
   ipcMain.handle('getAll', (_) => AccountRepository.getAll())
+  ipcMain.handle('insertAccount', (_, account: Account) => AccountRepository.insert(account))
+  ipcMain.handle('updateAccount', (_, account: Account) => AccountRepository.update(account))
+  ipcMain.handle('deleteAccount', (_, account: Account) => AccountRepository.delete(account))
+  ipcMain.handle('searchAccount', (_, searchString: string) =>
+    AccountRepository.search(searchString)
+  )
+  ipcMain.handle('getById', (_, id: number) => AccountRepository.getById(id))
 
   createWindow()
 

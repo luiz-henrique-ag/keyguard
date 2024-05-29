@@ -1,5 +1,7 @@
 export interface Account {
-  id: number
+  id?: number
+  platform: string
   account: string
   password: string
+  link: string
 }

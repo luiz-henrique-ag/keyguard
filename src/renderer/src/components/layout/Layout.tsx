@@ -1,7 +1,7 @@
 import '@/assets/logo.jpeg'
+import { SettingsButton } from '@/components/settings/SettingsButton'
 import React from 'react'
-import { NewAccount } from '../account/NewAccount'
-import { Input } from '../ui/input'
+import { Toaster } from '../ui/toast/toaster'
 import { AppIcon } from './AppIcon'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -13,13 +13,13 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           <AppIcon width={80} height={80} />
           <p className="scroll-m-20 text-2xl font-semibold tracking-tight">KeyGuard</p>
         </div>
-        <ThemeToggle />
-      </div>
-      <div className="flex justify-end mb-5 gap-2">
-        <Input placeholder="Pesquisar..." />
-        <NewAccount />
+        <div className="flex gap-2 items-center">
+          <ThemeToggle />
+          <SettingsButton />
+        </div>
       </div>
       <div>{children}</div>
+      <Toaster />
     </div>
   )
 }
