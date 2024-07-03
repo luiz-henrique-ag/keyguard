@@ -3,3 +3,5 @@ dist
 build
 out
 *.log*
+config.txt
+.env

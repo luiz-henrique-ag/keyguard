@@ -8,7 +8,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog'
 import { Input } from '../ui/input'
 import { toast } from '../ui/toast/use-toast'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
-import { GeneratePasswordModal } from './GeneratePasswordModal'
 
 interface ModalProps {
   open: boolean
@@ -93,11 +92,11 @@ export const EditAccountModal = ({ accountToEdit, onOpenChange, open }: ModalPro
                 />
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger>
-                      <GeneratePasswordModal />
+                    <TooltipTrigger asChild>
+                      <CircleHelp size={18} className="cursor-pointer" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Gerador de Senhas</p>
+                      <p>Link para direcionar para a página da plataforma. (Opcional)</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>

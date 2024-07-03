@@ -1,4 +1,5 @@
 import { Account } from '@/db/model/account'
+import { User } from '@/db/model/user'
 import { contextBridge, ipcRenderer } from 'electron'
 
 if (!process.contextIsolated) {
@@ -13,6 +14,8 @@ try {
     updateAccount: (account: Account) => ipcRenderer.invoke('updateAccount', account),
     deleteAccount: (account: Account) => ipcRenderer.invoke('deleteAccount', account),
     searchAccount: (searchString: string) => ipcRenderer.invoke('searchAccount', searchString),
+    authenticate: (user: User) => ipcRenderer.invoke('autenticate', user),
+    checkConfiguration: () => ipcRenderer.invoke('checkConfiguration'),
     getById: (id: number) => ipcRenderer.invoke('getById', id)
   })
 } catch (error) {

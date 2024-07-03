@@ -1,4 +1,5 @@
 import { Account } from 'src/main/db/model/account'
+import { User } from 'src/main/db/model/user'
 
 export interface IElectronApi {
   locale: string
@@ -7,6 +8,9 @@ export interface IElectronApi {
   updateAccount: (account: Account) => Promise<boolean>
   deleteAccount: (account: Account) => Promise<boolean>
   searchAccount: (searchString: string) => Promise<Account[] | undefined>
+  updateUser: (user: User) => Promise<boolean>
+  getUser: () => User
+  checkConfiguration: () => boolean
   getById: (id: number) => Promise<Account | undefined>
 }
 
