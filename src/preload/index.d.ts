@@ -9,8 +9,7 @@ export interface IElectronApi {
   deleteAccount: (account: Account) => Promise<boolean>
   searchAccount: (searchString: string) => Promise<Account[] | undefined>
   updateUser: (user: User) => Promise<boolean>
-  getUser: () => User
-  checkConfiguration: () => boolean
+  getUser: () => Promise<User | undefined>
   getById: (id: number) => Promise<Account | undefined>
 }
 

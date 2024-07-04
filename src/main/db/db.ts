@@ -9,7 +9,8 @@ export class Db {
   static async getInstance(): Promise<Pool> {
     if (!this.connection) {
       this.connection = new Pool({
-        connectionString: process.env.DB_CONNECTION_STRING
+        connectionString:
+          'postgres://postgres.hyzobudjrycqrdyxicur:qoRNjyYaljIekS1G@aws-0-sa-east-1.pooler.supabase.com:5432/postgres'
       })
     }
     return this.connection

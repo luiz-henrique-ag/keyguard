@@ -63,7 +63,7 @@ export class AccountRepository {
   static async delete(account: Account): Promise<boolean> {
     const client = await Db.getInstance()
     try {
-      const x = await client.query<Account>('DELETE FROM accounts WHERE id=$1', [account.id])
+      await client.query<Account>('DELETE FROM accounts WHERE id=$1', [account.id])
       return true
     } catch (error) {
       return false

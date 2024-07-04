@@ -1,10 +1,10 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { BrowserWindow, app, ipcMain, shell } from 'electron'
-import fs from 'fs'
 import { join } from 'path'
 import { Db } from './db/db'
 import { Account } from './db/model/account'
 import { AccountRepository } from './db/repository/account-repository'
+import { UserRepository } from './db/repository/user-repository'
 
 function createWindow(): void {
   // Create the browser window.
@@ -12,6 +12,7 @@ function createWindow(): void {
     width: 900,
     height: 670,
     minWidth: 600,
+    icon: './src/renderer/src/assets/logo.ico',
     minHeight: 600,
     show: false,
     autoHideMenuBar: true,
@@ -64,9 +65,7 @@ app.whenReady().then(() => {
     AccountRepository.search(searchString)
   )
   ipcMain.handle('getById', (_, id: number) => AccountRepository.getById(id))
-  ipcMain.handle('checkConfiguration', (_) => checkConfiguration())
-
-  createConfigurationFile()
+  ipcMain.handle('getUser', (_) => UserRepository.getUser())
 
   createWindow()
 
@@ -89,28 +88,3 @@ app.on('window-all-closed', async () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
-
-function createConfigurationFile(): void {
-  fs.readFile('config.txt', (err, _) => {
-    if (err) {
-      fs.writeFile('config.txt', 'db_connection_string=', (err) => {
-        if (err) throw err
-        console.info('Configuration File Created!')
-      })
-    }
-  })
-}
-
-function checkConfiguration(): boolean {
-  fs.readFile('config.txt', (err, data) => {
-    if (err) {
-      console.log('erro')
-      return
-    }
-    const connectionString = data.toString().split('=')
-    console.log(connectionString)
-    return true
-  })
-  console.log(11)
-  return false
-}

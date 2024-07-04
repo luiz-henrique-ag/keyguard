@@ -1,5 +1,3 @@
-import '@/assets/logo.jpeg'
-import { SettingsButton } from '@/components/settings/SettingsButton'
 import React from 'react'
 import { Toaster } from '../ui/toast/toaster'
 import { AppIcon } from './AppIcon'
@@ -15,7 +13,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className="flex gap-2 items-center">
           <ThemeToggle />
-          <SettingsButton />
         </div>
       </div>
       <div>{children}</div>

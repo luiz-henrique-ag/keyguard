@@ -9,10 +9,6 @@ import { Layout } from '../components/layout/Layout'
 export const Home = () => {
   const [showFormDialog, setShowFormDialog] = useState<boolean>(false)
   const accounts = useAccountStore((state) => state.accounts)
-  const handleClick = () => {
-    const { checkConfiguration } = window.api
-    checkConfiguration()
-  }
   return (
     <Layout>
       <Button
