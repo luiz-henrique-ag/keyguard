@@ -92,7 +92,7 @@ export const Login = () => {
                 value={formData.password}
                 type="password"
                 onKeyDown={(e) => {
-                  if (e.key === 'enter') handleAuthenticate()
+                  if (e.key === 'Enter') handleAuthenticate()
                 }}
               />
             </div>

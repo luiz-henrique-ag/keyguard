@@ -1,7 +1,7 @@
 import { DialogDescription } from '@radix-ui/react-dialog'
 import { useAccountStore } from '@renderer/hooks/useAccountsStore'
 import { generateRandomPassword } from '@renderer/lib/utils'
-import { CircleHelp, KeyRound, LoaderCircle } from 'lucide-react'
+import { CircleHelp, Eye, EyeOff, KeyRound, LoaderCircle } from 'lucide-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Account } from 'src/main/db/model/account'
 import { Button } from '../ui/button'
@@ -24,6 +24,7 @@ export const NewAccountModal = ({ open, onOpenChange }: ModalProps) => {
   } as Account)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const add = useAccountStore((state) => state.add)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     const { insertAccount } = window.api
@@ -105,8 +106,17 @@ export const NewAccountModal = ({ open, onOpenChange }: ModalProps) => {
                   value={newAccount.password}
                   onChange={handleChange}
                   name="password"
+                  type={showPassword ? 'text' : 'password'}
                   required
                 />
+                <Button
+                  size="icon"
+                  type="button"
+                  className="w-10"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <Eye /> : <EyeOff />}
+                </Button>
                 <Button size="icon" type="button" className="w-10" onClick={handleGeneratePassword}>
                   <KeyRound size={18} />
                 </Button>

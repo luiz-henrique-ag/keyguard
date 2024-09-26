@@ -1,5 +1,10 @@
 {
   "name": "key-guard",
+  "productName": "Key Guard",
+  "author": {
+    "name": "Luiz Henrique Almeida Gomes",
+    "email": "luizhenriquealg@hotmail.com"
+  },
   "version": "1.0.0",
   "description": "An app to store your passwords.",
   "license": "MIT",
@@ -66,5 +71,8 @@
     "tailwindcss": "^3.4.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.9"
+  },
+  "build": {
+    "appId": "com.louiz.KeyGuard"
   }
 }
